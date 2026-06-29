@@ -44,7 +44,7 @@ print(f"Majority element (sorting): {majority_element_sorting(nums)}")  # Output
 
 
 
-##Moore's Voting Algorithm
+#Moore's Voting Algorithm
 class Solution(object):
     def majorityElement(self, nums):
         count = 0
