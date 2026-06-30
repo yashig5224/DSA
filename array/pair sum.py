@@ -41,3 +41,5 @@ class Solution:
     arr = [2, 7, 11, 15]
 target = 9
 print(f"optimal approach: {Solution().twoSum(arr, target)}")  # Output: [1, 2]
+
+
