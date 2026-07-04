@@ -1,26 +1,25 @@
 #leetcode 1 and 167 problems
-# brute force approach
-def pair_sum_brute_force(arr, target):
-    n = len(arr)
+# brute force approach 1
+class Solution: 
     
-    # Outer loop selects the first element
-    for i in range(n):
-        # Inner loop selects the second element (always ahead of i to avoid pairing with itself)
-        for j in range(i + 1, n):
-            # Check if the sum of the pair matches the target
-            if arr[i] + arr[j] == target:
-                return [arr[i], arr[j]]  # Returns the values. Use [i, j] if you need the indices.
-                
-    return []  # Return an empty list if no pair is found
+    def twoSum(self, nums, target):
+
+        n = len(nums)
+
+        for i in range(n):
+            for j in range(i + 1, n):
+
+                if nums[i] + nums[j] == target:
+                    return [i, j]
 
 # Example usage:
 arr = [2, 7, 11, 15]
 target = 9
-print(f"brute force approach: {pair_sum_brute_force(arr, target)}")  # Output: [2, 7]
+print(f"brute force approach: {Solution().twoSum(arr, target)}")  # Output: [0, 1]
 
 
 
-#optimal approach
+#optimal approach 167
 class Solution:
 
     def twoSum(self, numbers, target):
@@ -41,5 +40,24 @@ class Solution:
     arr = [2, 7, 11, 15]
 target = 9
 print(f"optimal approach: {Solution().twoSum(arr, target)}")  # Output: [1, 2]
+
+#using hashing
+class Solution:
+    def twoSum(self, nums, target):
+
+        hashmap = {}
+
+        for i in range(len(nums)):
+
+            complement = target - nums[i]
+
+            if complement in hashmap:
+                return [hashmap[complement], i]
+
+            hashmap[nums[i]] = i
+
+
+
+
 
 
