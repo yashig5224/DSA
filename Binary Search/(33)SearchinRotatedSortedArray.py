@@ -1,22 +1,29 @@
-class Solution(object):
+class Solution:
     def search(self, nums, target):
-        left, right = 0, len(nums) - 1
-
-        while left <= right:
-            mid = (left + right) // 2
-
+        st = 0
+        end = len(nums) - 1
+        
+        while st <= end:
+            mid = st + (end - st) // 2
+            
+            # If target is found at mid
             if nums[mid] == target:
                 return mid
-
-            if nums[left] <= nums[mid]:
-                if nums[left] <= target < nums[mid]:
-                    right = mid - 1
+            
+            # Check if Left half is sorted
+            if nums[st] <= nums[mid]:
+                # Check if target lies within the sorted left half
+                if nums[st] <= target and target <= nums[mid]:
+                    end = mid - 1  # Go left
                 else:
-                    left = mid + 1
+                    st = mid + 1   # Go right
+                    
+            # Otherwise, Right half must be sorted
             else:
-                if nums[mid] < target <= nums[right]:
-                    left = mid + 1
+                # Check if target lies within the sorted right half
+                if nums[mid] <= target and target <= nums[end]:
+                    st = mid + 1   # Go right
                 else:
-                    right = mid - 1
-
+                    end = mid - 1  # Go left
+                    
         return -1
