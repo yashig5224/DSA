@@ -1,4 +1,7 @@
 #Iterative method
+from re import search
+
+
 def binary_search(arr, target):
     # Initialize start (st) and end pointers
     st = 0
@@ -60,5 +63,5 @@ tar = 0
 st = 0
 end = len(arr) - 1
 
-result = binary_search_recursive(arr, tar, st, end)
+result = Solution().search(arr, tar)
 print(f"Target found at index: {result}")  # Output: 1
