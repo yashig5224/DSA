@@ -36,20 +36,23 @@ print(f"Target found at index: {result}")  # Output: 6
 
 class Solution:
     def search(self, nums, target):
-        st = 0
-        end = len(nums) - 1
-        
-        while st <= end:
-            mid = st + (end - st) // 2
-            
-            if target > nums[mid]:
-                st = mid + 1
-            elif target < nums[mid]:
-                end = mid - 1
-            else:
+
+        def solve(start, end):
+            if start > end:
+                return -1
+
+            mid = start + (end - start) // 2
+
+            if nums[mid] == target:
                 return mid
-                
-        return -1
+
+            elif nums[mid] < target:
+                return solve(mid + 1, end)
+
+            else:
+                return solve(start, mid - 1)
+
+        return solve(0, len(nums) - 1)
 
 # Example usage from the image:
 arr = [-1, 0, 3, 5, 9, 12]
