@@ -17,3 +17,6 @@ class Solution:
                     count += 1
 
         return count
+    
+#APPROACH 2-PREFIX SUM+HASH MAP
+    
